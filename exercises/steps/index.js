@@ -17,6 +17,47 @@
 //       '### '
 //       '####'
 
-function steps(n) {}
+// my brute-force approach
+// function steps(n) {
+//   for (let i = 0; i < n; i++) {
+//     if (n === 1) {
+//       console.log('#');
+//     } else {
+//       console.log(`${'#'.repeat(i + 1)}${' '.repeat(n - (i + 1))}`);
+//     }
+//   }
+// }
+
+// his first solution
+// function steps(n) {
+//   // from 0 to n (iterate through rows)
+//   for (let row = 0; row < n; row++) {
+//     let stair = '';
+//     // from 0 to n (iterate through cols)
+//     for (let column = 0; column < n; column++) {
+//       if (column <= row) {
+//         stair += '#';
+//       } else {
+//         stair += ' ';
+//       }
+//     }
+//     console.log(stair);
+//   }
+// }
+
+// recursive solution
+function steps(n, row = 0, stair = '') {
+  if (n === row) {
+    return;
+  }
+
+  if (n === stair.length) {
+    console.log(stair);
+    return steps(n, row + 1);
+  }
+
+  const add = stair.length <= row ? '#' : ' ';
+  steps(n, row, stair + add);
+}
 
 module.exports = steps;
