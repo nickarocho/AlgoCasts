@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable no-plusplus */
 // --- Directions
 // Write a function that accepts an integer N
 // and returns a NxN spiral matrix.
@@ -50,51 +52,97 @@
 //   // ... repeat for other two sides
 // }
 
+// function matrix(n) {
+//   // initialize empty 2D array
+//   const results = [];
+//   for (let i = 0; i < n; i++) {
+//     results.push([]);
+//   }
+
+//   // initialize counter - keeps track of which number to add at the current index
+//   let counter = 1;
+//   // keep track of the start row, start col, end row, end col. Will update dynamically
+//   let [startCol, startRow] = [0, 0];
+//   let [endCol, endRow] = [n - 1, n - 1];
+
+//   // continue the loops til the grid is completed
+//   while (startCol <= endCol && startRow <= endRow) {
+//     // Top row looper
+//     for (let i = startCol; i <= endCol; i++) {
+//       results[startRow][i] = counter;
+//       counter++;
+//     }
+//     startRow++;
+
+//     // Right column looper
+//     for (let i = startRow; i <= endRow; i++) {
+//       results[i][endCol] = counter;
+//       counter++;
+//     }
+//     endCol--;
+
+//     // Bottom row looper
+//     for (let i = endCol; i >= startCol; i--) {
+//       results[endRow][i] = counter;
+//       counter++;
+//     }
+//     endRow--;
+
+//     // Start col looper
+//     for (let i = endRow; i >= startRow; i--) {
+//       results[i][startCol] = counter;
+//       counter++;
+//     }
+//     startCol++;
+//   }
+
+//   return results;
+// }
+
+rep 2 - no peeking
 function matrix(n) {
-  // initialize empty 2D array
-  const results = [];
+  const spiral = [];
   for (let i = 0; i < n; i++) {
-    results.push([]);
+    spiral.push([]);
   }
 
-  // initialize counter - keeps track of which number to add at the current index
+  let [startRow, startCol] = [0, 0];
+  let [endRow, endCol] = [n - 1, n - 1];
   let counter = 1;
-  // keep track of the start row, start col, end row, end col. Will update dynamically
-  let [startCol, startRow] = [0, 0];
-  let [endCol, endRow] = [n - 1, n - 1];
 
-  // continue the loops til the grid is completed
-  while (startCol <= endCol && startRow <= endRow) {
-    // Top row looper
-    for (let i = startCol; i <= endCol; i++) {
-      results[startRow][i] = counter;
+  while (startRow <= endRow && startCol <= endCol) {
+    console.log({ counter });
+
+    // Top row
+    for (let i = startRow; i <= endCol; i++) {
+      spiral[startRow][i] = counter;
       counter++;
     }
     startRow++;
 
-    // Right column looper
+    // Right col
     for (let i = startRow; i <= endRow; i++) {
-      results[i][endCol] = counter;
+      spiral[i][endCol] = counter;
       counter++;
     }
     endCol--;
 
-    // Bottom row looper
+    // Bottom row
     for (let i = endCol; i >= startCol; i--) {
-      results[endRow][i] = counter;
+      spiral[endRow][i] = counter;
       counter++;
     }
     endRow--;
 
-    // Start col looper
+    // Left col
     for (let i = endRow; i >= startRow; i--) {
-      results[i][startCol] = counter;
+      spiral[i][startCol] = counter;
       counter++;
     }
     startCol++;
   }
 
-  return results;
+  return spiral;
 }
 
 module.exports = matrix;
