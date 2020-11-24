@@ -8,6 +8,24 @@
 // Example:
 //   fib(4) === 3
 
-function fib(n) {}
+// iterative solution - O(n), linear - ok
+// function fib(n) {
+//   const fibs = [0, 1];
+//   for (let i = 2; i <= n; i++) {
+//     const a = fibs[i - 1];
+//     const b = fibs[i - 2];
+//     fibs.push(a + b);
+//   }
+//   return fibs[n];
+// }
+
+// recursive solution - O(2^n), exponential - BAD
+function fib(n) {
+  if (n < 2) {
+    return n;
+  }
+
+  return fib(n - 1) + fib(n - 2);
+}
 
 module.exports = fib;
