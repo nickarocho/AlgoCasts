@@ -99,7 +99,7 @@
 //   return results;
 // }
 
-rep 2 - no peeking
+// rep 2 - no peeking
 function matrix(n) {
   const spiral = [];
   for (let i = 0; i < n; i++) {
