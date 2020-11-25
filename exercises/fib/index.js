@@ -20,12 +20,37 @@
 // }
 
 // recursive solution - O(2^n), exponential - BAD
+// function fib(n) {
+//   if (n < 2) {
+//     return n;
+//   }
+
+//   return fib(n - 1) + fib(n - 2);
+// }
+
+// utilizing memoization to improve runtime of recursive fib
+// by caching the result of expensive fn calls
+function memoize(fn) {
+  const cache = {};
+  return function (...args) {
+    if (cache[args]) {
+      return cache[args];
+    }
+    const result = fn.apply(this, args);
+    cache[args] = result;
+
+    return result;
+  };
+}
+
 function fib(n) {
   if (n < 2) {
     return n;
   }
-
+  // calls the memoized version of this fn
   return fib(n - 1) + fib(n - 2);
 }
+
+fib = memoize(fib);
 
 module.exports = fib;
