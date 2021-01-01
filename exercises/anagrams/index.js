@@ -43,36 +43,36 @@ function anagrams(stringA, stringB) {
 }
 
 // his first solution
-// function anagrams(stringA, stringB) {
-//   const aCharMap = buildCharMap(stringA);
-//   const bCharMap = buildCharMap(stringB);
+function anagrams(stringA, stringB) {
+  const aCharMap = buildCharMap(stringA);
+  const bCharMap = buildCharMap(stringB);
 
-//   if (Object.keys(aCharMap).length !== Object.keys(bCharMap).length) {
-//     return false;
-//   }
+  if (Object.keys(aCharMap).length !== Object.keys(bCharMap).length) {
+    return false;
+  }
 
-//   for (const char in aCharMap) {
-//     if (aCharMap[char] !== bCharMap[char]) return false;
-//   }
+  for (const char in aCharMap) {
+    if (aCharMap[char] !== bCharMap[char]) return false;
+  }
 
-//   return true;
-// }
+  return true;
+}
 
-// function buildCharMap(str) {
-//   const charMap = {};
-//   for (const char of str.replace(/[^\w]/g, '').toLowerCase()) {
-//     charMap[char] = charMap[char] + 1 || 1;
-//   }
-//   return charMap;
-// }
+function buildCharMap(str) {
+  const charMap = {};
+  for (const char of str.replace(/[^\w]/g, '').toLowerCase()) {
+    charMap[char] = charMap[char] + 1 || 1;
+  }
+  return charMap;
+}
 
 // his second hot shot 🔥 solution (has issues with scalability)
-// function anagrams(stringA, stringB) {
-//   return cleanString(stringA) === cleanString(stringB);
-// }
+function anagrams(stringA, stringB) {
+  return cleanString(stringA) === cleanString(stringB);
+}
 
-// function cleanString(str) {
-//   return str.replace(/[^\w]/g, '').toLowerCase().split('').sort().join('');
-// }
+function cleanString(str) {
+  return str.replace(/[^\w]/g, '').toLowerCase().split('').sort().join('');
+}
 
 module.exports = anagrams;

@@ -1,6 +1,7 @@
 const L = require('./index');
+
 const List = L.LinkedList;
-const Node = L.Node;
+const { Node } = L;
 
 test('List is a class', () => {
   expect(typeof List.prototype.constructor).toEqual('function');
@@ -10,7 +11,7 @@ test('Node is a class', () => {
   expect(typeof Node.prototype.constructor).toEqual('function');
 });
 
-describe.skip('A Node', () => {
+describe('A Node', () => {
   test('has properties "data" and "next"', () => {
     const node = new Node('a', 'b');
     expect(node.data).toEqual('a');
@@ -281,7 +282,7 @@ describe.skip('ForEach', () => {
     l.insertLast(3);
     l.insertLast(4);
 
-    l.forEach(node => {
+    l.forEach((node) => {
       node.data += 10;
     });
 
@@ -301,7 +302,7 @@ describe.skip('for...of loops', () => {
     l.insertLast(3);
     l.insertLast(4);
 
-    for (let node of l) {
+    for (const node of l) {
       node.data += 10;
     }
 
@@ -314,7 +315,7 @@ describe.skip('for...of loops', () => {
   test('for...of works on an empty list', () => {
     const l = new List();
     expect(() => {
-      for (let node of l) {
+      for (const node of l) {
       }
     }).not.toThrow();
   });

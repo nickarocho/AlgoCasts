@@ -25,28 +25,28 @@ function maxChar(str) {
 }
 
 // his first solution
-// function maxChar(str) {
-//   const charMap = {};
-//   let max = 0;
-//   let maxChar = '';
+function maxChar(str) {
+  const charMap = {};
+  let max = 0;
+  let maxChar = '';
 
-//   for (const char of str) {
-//     if (charMap[char]) {
-//       charMap[char] += 1;
-//     } else {
-//       charMap[char] = 1;
-//     }
-//   }
+  for (const char of str) {
+    if (charMap[char]) {
+      charMap[char] += 1;
+    } else {
+      charMap[char] = 1;
+    }
+  }
 
-//   // seems to me that two loops is redundant... can do operation in above loop 🤷🏻‍♂️
-//   for (const char in charMap) {
-//     if (charMap[char] > max) {
-//       max = charMap[char];
-//       maxChar = char;
-//     }
-//   }
+  // seems to me that two loops is redundant... can do operation in above loop 🤷🏻‍♂️
+  for (const char in charMap) {
+    if (charMap[char] > max) {
+      max = charMap[char];
+      maxChar = char;
+    }
+  }
 
-//   return maxChar;
-// }
+  return maxChar;
+}
 
 module.exports = maxChar;
