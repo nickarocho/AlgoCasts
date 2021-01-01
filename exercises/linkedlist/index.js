@@ -10,6 +10,15 @@ class Node {
   }
 }
 
-class LinkedList {}
+class LinkedList {
+  constructor() {
+    this.head = null;
+  }
+
+  insertFirst(data) {
+    // links the OLD head as next by passing ref as second param
+    this.head = new Node(data, this.head);
+  }
+}
 
 module.exports = { Node, LinkedList };
