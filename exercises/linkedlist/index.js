@@ -19,6 +19,18 @@ class LinkedList {
     // links the OLD head as next by passing ref as second param
     this.head = new Node(data, this.head);
   }
+
+  size() {
+    let counter = 0;
+    let node = this.head;
+
+    while (node) {
+      counter += 1;
+      node = node.next;
+    }
+
+    return counter;
+  }
 }
 
 module.exports = { Node, LinkedList };
