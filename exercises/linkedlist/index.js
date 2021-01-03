@@ -17,7 +17,10 @@ class LinkedList {
 
   insertFirst(data) {
     // links the OLD head as next by passing ref as second param
-    this.head = new Node(data, this.head);
+    // this.head = new Node(data, this.head);
+
+    // utilizing reusable class method
+    this.insertAt(data, 0);
   }
 
   size() {
@@ -33,16 +36,22 @@ class LinkedList {
   }
 
   getFirst() {
-    return this.head;
+    // return this.head;
+
+    // utilizing reusable class method
+    return this.getAt(0);
   }
 
   getLast() {
-    if (!this.head) return null;
-    let node = this.head;
-    while (node) {
-      if (!node.next) return node;
-      node = node.next;
-    }
+    // if (!this.head) return null;
+    // let node = this.head;
+    // while (node) {
+    //   if (!node.next) return node;
+    //   node = node.next;
+    // }
+
+    // utilizing reusable methods instead
+    return this.getAt(this.size() - 1);
   }
 
   clear() {
@@ -119,6 +128,25 @@ class LinkedList {
     const previous = this.getAt(idx - 1) || this.getLast();
     const node = new Node(data, previous.next);
     previous.next = node;
+  }
+
+  forEach(fn) {
+    let node = this.head;
+    let counter = 0;
+    while (node) {
+      fn(node, counter);
+      node = node.next;
+      counter += 1;
+    }
+  }
+
+  // generator fn
+  *[Symbol.iterator]() {
+    let node = this.head;
+    while (node) {
+      yield node;
+      node = node.next;
+    }
   }
 }
 
